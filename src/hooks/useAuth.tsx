@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://192.168.1.8:5000/users";
+const API_URL = "http://10.0.2.2:5000/users";
 
 interface AuthResponse {
   success: boolean;
@@ -46,8 +46,11 @@ const useAuth = (endpoint: "login" | "register"): UseAuthReturn => {
         throw new Error(data.message || `${endpoint} failed`);
       }
 
-      await AsyncStorage.setItem("auth_token", data.token);
-      setIsAuthenticated(true);
+      if (endpoint === "login") {
+        await AsyncStorage.setItem("auth_token", data.token);
+        await AsyncStorage.setItem("user_email", email);
+        setIsAuthenticated(true);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
@@ -57,6 +60,7 @@ const useAuth = (endpoint: "login" | "register"): UseAuthReturn => {
 
   const logout = async () => {
     await AsyncStorage.removeItem("auth_token");
+    await AsyncStorage.removeItem("user_email");
     setIsAuthenticated(false);
   };
 

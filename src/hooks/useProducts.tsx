@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "http://192.168.1.8:5000/products";
+const API_URL = "http://10.0.2.2:5000/products";
 
 export interface Product {
   _id: string;
@@ -97,10 +97,13 @@ const useProducts = () => {
       };
       formData.append("image", file as any);
 
+      console.log([...formData]);
+
       const response = await axios.put(`${API_URL}/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         timeout: 5000,
       });
+      console.log(response.data);
       setProducts((prev) =>
         prev.map((p) => (p._id === id ? response.data : p))
       );

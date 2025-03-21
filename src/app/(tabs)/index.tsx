@@ -128,7 +128,7 @@ export default function ProductManagement() {
     >
       <Image
         source={{
-          uri: `http://192.168.1.8:5000${item.image}`,
+          uri: `http://10.0.2.2:5000${item.image}`,
         }}
         style={styles.productImage}
         resizeMode="cover"

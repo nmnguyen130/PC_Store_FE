@@ -160,7 +160,7 @@ export default function EditProduct() {
                   uri:
                     newImage != image
                       ? newImage
-                      : `http://192.168.1.8:5000${image}`,
+                      : `http://10.0.2.2:5000${image}`,
                 }}
                 style={styles.productImage}
                 resizeMode="cover"
@@ -168,7 +168,7 @@ export default function EditProduct() {
             ) : image ? (
               <Image
                 source={{
-                  uri: `http://192.168.1.8:5000${image}`,
+                  uri: `http://10.0.2.2:5000${image}`,
                 }}
                 style={styles.productImage}
                 resizeMode="cover"

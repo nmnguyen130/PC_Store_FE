@@ -63,13 +63,13 @@ const LoginScreen = () => {
             <View style={styles.overlay}>
               <View style={styles.logoContainer}>
                 <FontAwesome name="microchip" size={60} color="#ffffff" />
-                <Text style={styles.logoText}>TechParts</Text>
+                <Text style={styles.logoText}>PC Parts</Text>
               </View>
 
               <View style={styles.formContainer}>
                 <Text style={styles.welcomeText}>Welcome Back</Text>
                 <Text style={styles.subtitleText}>
-                  Sign in to continue to TechParts
+                  Sign in to continue to PC Parts
                 </Text>
 
                 <View style={styles.inputContainer}>
